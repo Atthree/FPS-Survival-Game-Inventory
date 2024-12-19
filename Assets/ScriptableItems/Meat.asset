@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Meat
   description: Eat
   canStackable: 1
-  itemIcon: {fileID: 21300000, guid: a01087ce1455c7e4c8f2410c26afcfd2, type: 3}
+  itemIcon: {fileID: 21300000, guid: 5778bf927fff2a14986e144304d0833a, type: 3}
   itemPrefab: {fileID: 2570652210002778951, guid: 6c8f7014763eae44f88a5a484df4882f, type: 3}
   energy: 50
