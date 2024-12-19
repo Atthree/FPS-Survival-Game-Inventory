@@ -12,7 +12,24 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         inventoryUIController = gameObject.GetComponent<InventoryUIController>();
-        inventoryUIController.UpdateUI();
+    }
+    public void DeleteItem()
+    {
+        if(isSwapping == true)
+        {
+            playerInventory.DeleteItem(tempIndex);
+            isSwapping = false;
+            inventoryUIController.UpdateUI();
+        }
+    }
+    public void DropItem()
+    {
+        if(isSwapping == true)
+        {
+            playerInventory.DropItem(tempIndex,gameObject.transform.position + Vector3.forward*2);
+            isSwapping = false;
+            inventoryUIController.UpdateUI();
+        }
     }
     public void SwapItem(int index)
     {

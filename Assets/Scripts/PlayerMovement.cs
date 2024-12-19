@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     Vector3 direction;
     CapsuleCollider capsuleCol;
+    [SerializeField] GameObject userInventory;
+    bool isInventoryOpen;
 
     float mouseX, mouseY;
     float rotX, rotY;
@@ -20,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     {
         capsuleCol = gameObject.GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
+        userInventory.SetActive(false);
+        //Cursor.lockState = CursorLockMode.Locked;
     }
         
     void Update()
@@ -37,7 +42,20 @@ public class PlayerMovement : MonoBehaviour
 
         rotY += mouseX;
         transform.localRotation = Quaternion.Euler(0, rotY, 0);
-
+        if (Input.GetKey(KeyCode.I))
+        {
+            if (isInventoryOpen == false)
+            {
+                isInventoryOpen = true;
+                userInventory.SetActive(true);
+            }
+            else if (isInventoryOpen == true) 
+            {
+                isInventoryOpen = false;
+                userInventory.SetActive(false);
+            }
+            
+        }
         if (Input.GetButtonDown("Jump"))
         {
             if (OnGround()) 
