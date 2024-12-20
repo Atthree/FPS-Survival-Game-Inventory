@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     bool isSwapping;
     int tempIndex;
     Slot tempSlot;
+    public PlayerActions playerActions;
     private void Start()
     {
         inventoryUIController = gameObject.GetComponent<InventoryUIController>();
@@ -21,6 +22,14 @@ public class Inventory : MonoBehaviour
             isSwapping = false;
             inventoryUIController.UpdateUI();
         }
+    }
+    public void CurrentItem(int index)
+    {
+        if (playerInventory.inventorySlots[index].item)
+        {
+            playerActions.SetItem(playerInventory.inventorySlots[index].item.itemPrefab);
+        }
+        
     }
     public void DropItem()
     {
